@@ -65,6 +65,8 @@ ML Analytics & Power BI
 | Machine Learning | Random Forest Classifier, Feature Engineering, Time-Series Analytics |
 | Analytics & BI | Power BI, R, ggplot2, corrplot |
 | DevOps & Deployment | Docker, Docker Compose |
+
+
 ##Core Modules
 ###Edge Monitoring & Intrusion Detection
 
