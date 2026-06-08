@@ -1,0 +1,72 @@
+# --- 1. SETUP & LIBRARIES ---
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(corrplot)
+
+# Set path and load data
+setwd("C:/Users/lenovo/Downloads")
+df <- read.csv("driver_journey_data.csv")
+df$event_time <- as.POSIXct(df$event_time)
+
+# --- 2. WINDOW 1: SENSOR CORRELATION HEATMAP ---
+dev.new() # Opens first new window
+numeric_df <- df %>% select(eye_closure_secs, steering_sway_pct, vehicle_speed_kmh, risk_score)
+cor_matrix <- cor(numeric_df)
+corrplot(cor_matrix, method = "color", addCoef.col = "black", 
+         title = "\n\n1. Sensor Correlation Matrix", mar=c(0,0,2,0))
+
+# --- 3. WINDOW 2: UNIFIED TELEMETRY TIMELINE ---
+dev.new() # Opens second new window
+df_long <- df %>%
+  select(event_time, vehicle_speed_kmh, eye_closure_secs, risk_score) %>%
+  gather(key = "Metric", value = "Value", -event_time)
+
+print(ggplot(df_long, aes(x = event_time, y = Value, color = Metric)) +
+  geom_line(size = 1) +
+  facet_wrap(~Metric, scales = "free_y", ncol = 1) +
+  labs(title = "2. Driver Monitoring System: Unified Telemetry Stream",
+       x = "Time of Journey", y = "Sensor Reading") +
+  theme_bw() + theme(legend.position = "none"))
+
+# --- 4. WINDOW 3: SEVERITY FREQUENCY (BAR CHART) ---
+dev.new() # Opens third new window
+print(ggplot(df, aes(x = severity, fill = severity)) +
+  geom_bar() +
+  scale_fill_manual(values = c("CRITICAL" = "red", "WARNING" = "orange", "NORMAL" = "green")) +
+  labs(title = "3. Detection Frequency by Severity Level", x = "Alert Category", y = "Total Events") +
+  theme_minimal())
+
+# --- 5. WINDOW 4: PREDICTIVE RISK DENSITY ---
+dev.new() # Opens fourth new window
+print(ggplot(df, aes(x = risk_score, fill = severity)) +
+  geom_density(alpha = 0.4) +
+  labs(title = "4. Risk Score Probability Density", x = "Calculated Risk", y = "Density") +
+  theme_light())
+
+# --- FINAL SUMMARY PRINTED TO CONSOLE ---
+cat("\n--- FINAL EVALUATION SUMMARY ---\n")
+severity_summary <- df %>%
+  group_by(severity) %>%
+  summarise(Count = n(), Percentage = round((n() / nrow(df)) * 100, 2))
+print(severity_summary)
+
+# 1. Load the library correctly
+library(rpart)
+library(rpart.plot)
+
+# 2. Open a fresh window
+dev.new(noRStudioGD = TRUE)
+
+# 3. Create the model (using your Spark-generated data)
+tree_model <- rpart(severity ~ eye_closure_secs + steering_sway_pct + vehicle_speed_kmh, 
+                    data = df, method = "class")
+
+# 4. Draw the tree with professional formatting
+prp(tree_model, 
+    type = 2,           # Draw labels for each node
+    extra = 104,        # Show percentages
+    box.palette = "RdYlGn", 
+    shadow.col = "gray", 
+    nn = TRUE,          # Show node numbers
+    main = "5. Automated Decision Logic: Fatigue Classification")
