@@ -1,154 +1,135 @@
-Project Sentinel-II
-Real-Time Intrusion Detection, Driver Fatigue Monitoring & Big Data Analytics Platform
+#  Project Sentinel-II
 
-Project Sentinel-II is an end-to-end intelligent safety and monitoring system that combines IoT sensors, computer vision, edge computing, cloud services, big data engineering, machine learning, and business intelligence to detect physical intrusions and monitor driver fatigue in real time.
+## Real-Time Intrusion Detection, Driver Fatigue Monitoring & Big Data Analytics Platform
 
-The platform processes sensor and biometric data at the edge, streams telemetry to the cloud, performs large-scale analytics using a Databricks Medallion Architecture, and visualizes operational insights through Power BI dashboards.
+Project Sentinel-II is an end-to-end intelligent safety system that combines **IoT sensors**, **Computer Vision**, **Cloud Computing**, **Big Data Engineering**, **Machine Learning**, and **Business Intelligence** to detect unauthorized physical intrusions and monitor driver fatigue in real time.
 
-Key Features
+The platform processes sensor and biometric data at the edge, streams telemetry to the cloud, performs large-scale analytics using a **Databricks Medallion Architecture**, and visualizes operational insights through **Power BI dashboards**.
 
-✅ Real-time intrusion detection using vibration, pressure, and sound sensors
+---
+#  Key Features
 
-✅ Face recognition–based identity verification
+### Smart Intrusion Detection
+- Real-time monitoring using vibration, pressure, and sound sensors
+- Multi-sensor validation to reduce false positives
+- Automated threat categorization and alert generation
 
-✅ Edge-to-cloud event streaming with FastAPI and Firebase
+### Face Recognition Authentication
+- Edge-based biometric verification
+- Authorized user identification
+- Secure access validation
 
-✅ Distributed data processing using Databricks & PySpark
+### Real-Time Data Processing
+- FastAPI-powered event ingestion
+- Firebase cloud synchronization
+- High-throughput telemetry streaming
 
-✅ Driver fatigue detection and risk classification
+### Machine Learning Risk Analysis
+- Driver fatigue prediction
+- Random Forest–based risk classification
+- Continuous behavioral monitoring
 
-✅ Machine Learning–based risk prediction using Random Forest
+### Advanced Analytics & Visualization
+- Databricks Medallion Architecture
+- Statistical analysis using R
+- Interactive Power BI dashboards
 
-✅ Statistical analysis using R
+---
 
-✅ Interactive operational dashboards in Power BI
+#  System Architecture
 
-System Architecture
-┌────────────────────────────────────────────┐
-│              Edge Layer                    │
-├────────────────────────────────────────────┤
-│ • Vibration Sensor                         │
-│ • Pressure Sensor                          │
-│ • Sound Sensor                             │
-│ • Camera Feed                              │
-└───────────────┬────────────────────────────┘
-                │
-                ▼
-┌────────────────────────────────────────────┐
-│          FastAPI Edge Gateway              │
-├────────────────────────────────────────────┤
-│ • Event Processing                         │
-│ • Face Recognition                         │
-│ • Risk Scoring                             │
-│ • Alert Management                         │
-└───────────────┬────────────────────────────┘
-                │
-                ▼
-┌────────────────────────────────────────────┐
-│               Firebase                     │
-├────────────────────────────────────────────┤
-│ • Realtime Database                        │
-│ • Cloud Storage                            │
-└───────────────┬────────────────────────────┘
-                │
-                ▼
-┌────────────────────────────────────────────┐
-│      Databricks Medallion Architecture     │
-├────────────────────────────────────────────┤
-│ Bronze → Raw Data                          │
-│ Silver → Feature Engineering               │
-│ Gold   → ML & Analytics                    │
-└───────────────┬────────────────────────────┘
-                │
-                ▼
-┌────────────────────────────────────────────┐
-│ Analytics & Visualization                  │
-├────────────────────────────────────────────┤
-│ • Power BI                                 │
-│ • R Statistical Analysis                   │
-└────────────────────────────────────────────┘
+```text
+Edge Devices
+      │
+      ▼
+FastAPI Gateway
+      │
+      ▼
+Firebase Cloud
+      │
+      ▼
+Databricks Lakehouse
+      │
+      ▼
+ML Analytics & Power BI
+```text
+
 Technology Stack
-Backend & Edge Computing
-FastAPI
-Python
-OpenCV
-face_recognition
-Firebase Admin SDK
-IoT & Sensors
-Vibration Sensors
-Pressure Sensors
-Sound Sensors
-Camera Module
-Cloud & Data Engineering
-Firebase Realtime Database
-Firebase Cloud Storage
-Databricks
-Apache Spark
-PySpark
-Delta Lake
-Machine Learning
-Random Forest Classifier
-Feature Engineering
-Time-Series Analytics
-Analytics & Visualization
-Power BI
-R
-ggplot2
-corrplot
-DevOps
-Docker
-Docker Compose
-Medallion Data Pipeline
-Bronze Layer – Raw Data Ingestion
-Streams sensor telemetry from Firebase
-Stores raw events with schema validation
-Maintains immutable historical records
-Silver Layer – Data Transformation
-Noise reduction and smoothing
-Rolling window calculations
-Risk volatility computation
-Fatigue velocity analysis
-Feature engineering for ML models
-Gold Layer – Business Intelligence
-Driver risk categorization
-Operational risk metrics
-Machine learning predictions
-Dashboard-ready datasets
-Intrusion Detection Engine
+-Backend & APIs
+-FastAPI
+-Python
+-Firebase Admin SDK
+-Computer Vision
+-OpenCV
+-face_recognition
+-Data Engineering
+-Databricks
+-Apache Spark
+-PySpark
+-Delta Lake
+-Machine Learning
+-Random Forest Classifier
+-Feature Engineering
+-Time-Series Analytics
+-Analytics & BI
+-Power BI
+-R
+-ggplot2
+-corrplot
+-DevOps
+-Docker
+-Docker Compose
 
-The intrusion detection module combines multiple sensor signals to minimize false positives.
+##Core Modules
+###Edge Monitoring & Intrusion Detection
 
-Detection Inputs
-Sound Level
-Pressure Changes
-Vibration Activity
-Safety Mechanisms
-Consecutive-hit validation
-Sliding detection window
-Alert cooldown period
-Multi-sensor verification
+The intrusion detection engine continuously evaluates:
 
-This approach improves detection reliability under real-world environmental conditions.
+-Sound Activity
+-Pressure Changes
+-Vibration Events
 
-Driver Fatigue Analytics
+To improve reliability, alerts are generated only after multiple consecutive detections within a configurable time window.
 
-The fatigue monitoring pipeline analyzes behavioral and sensor-derived indicators to identify potentially dangerous driving patterns.
+Key Capabilities
 
-Key Metrics
-Eye Closure Duration
-Risk Score
-Steering Variability
-Vehicle Speed Trends
-Fatigue Velocity
-ML-Based Classification
+✔ Multi-sensor fusion
 
-A PySpark Random Forest model classifies drivers into:
+✔ Consecutive-hit validation
 
-Safe
-Moderate Risk
-High Risk
-Critical Risk
-Project Structure
+✔ Alert throttling
+
+✔ False-positive reduction
+## Driver Fatigue Detection
+
+###The fatigue analytics pipeline monitors behavioral indicators and identifies potentially dangerous driving patterns.
+
+Tracked Metrics
+-Eye Closure Duration
+-Risk Score
+-Steering Variability
+-Vehicle Speed
+-Fatigue Velocity
+-Risk Categories
+🟢 Safe
+🟡 Moderate Risk
+🟠 High Risk
+🔴 Critical Risk
+## Databricks Medallion Architecture
+### Bronze Layer
+
+Raw telemetry ingestion and schema validation.
+
+### Silver Layer
+
+Feature engineering, rolling windows, smoothing, and risk calculations.
+
+### Gold Layer
+
+Machine learning predictions and dashboard-ready datasets
+
+## PROJECT STRUCTURE
+
 Project-Sentinel-II/
 │
 ├── main.py
@@ -159,80 +140,47 @@ Project-Sentinel-II/
 ├── docker-compose.yml
 ├── .env
 └── README.md
-File Descriptions
-File	Purpose
-main.py	FastAPI backend and event processing
-risk.py	Intrusion detection and risk scoring logic
-REAL-TIME databricks.ipynb	Databricks ETL and ML pipeline
-r-code.txt	Statistical analysis scripts
-visuals_bi.pbix	Power BI dashboard
-docker-compose.yml	Container orchestration
-Installation
-Prerequisites
+
+## Getting Started
+### Prerequisites
 Python 3.10+
 Docker
 Docker Compose
 Firebase Project
 Databricks Workspace
-Environment Variables
-
-Create a .env file:
-
+###Configure Environment Variables
 FIREBASE_STORAGE_BUCKET=your_bucket
 FIREBASE_DATABASE_URL=your_database_url
-Run with Docker
+###Start the Application
 docker compose up --build -d
 
-Application will be available at:
+Application URL:
 
 http://localhost:8000
-Databricks Setup
-Import REAL-TIME databricks.ipynb
-Configure Firebase credentials
-Attach a Spark cluster
-Run all notebook cells
-R Analytics Setup
 
-Install required packages:
+##Dashboard Insights
+###Security Monitoring
+-Active intrusion alerts
+-Threat severity tracking
+-Event timeline analysis
+###Driver Safety Monitoring
+-Fatigue trends
+-Risk classification
+-Safety score tracking
+###Fleet Intelligence
+-Fleet health overview
+-Historical incident analysis
+-Operational risk monitoring
+##Business Impact
+-Enhanced physical security
+-Reduced false alarms
+-Proactive driver safety monitoring
+-Scalable fleet intelligence platform
+-Data-driven operational decision making
+##Future Enhancements
+-Real-time SMS & Email alerts
+-GPS geofencing integration
+-Deep Learning fatigue models
+-Edge AI deployment
+-Predictive maintenance analytics
 
-install.packages(
-  c(
-    "dplyr",
-    "ggplot2",
-    "tidyr",
-    "corrplot"
-  )
-)
-
-Execute the scripts inside:
-
-r-code.txt
-Dashboard Insights
-Security Monitoring
-Active intrusion alerts
-Sensor event timeline
-Threat severity tracking
-Driver Safety
-Driver fatigue trends
-Risk classification distribution
-Vehicle safety indicators
-Fleet Operations
-Fleet health overview
-Risk hotspot identification
-Historical incident analysis
-Business Impact
-Improves vehicle and asset security
-Reduces false intrusion alerts
-Enables proactive driver safety monitoring
-Supports data-driven fleet management
-Scales from single vehicles to enterprise fleets
-Future Enhancements
-Real-time notification system (SMS/Email)
-GPS-based geofencing
-Deep Learning fatigue models
-Edge AI deployment on embedded devices
-Predictive maintenance analytics
-Authors
-
-Prachi Verma
-B.Tech (2027) | Software Engineering & Data Engineering Enthusiast
