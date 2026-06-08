@@ -52,7 +52,7 @@ Databricks Lakehouse
       │
       ▼
 ML Analytics & Power BI
-```text
+```
 
 Technology Stack
 -Backend & APIs
