@@ -54,9 +54,9 @@ Databricks Lakehouse
 ML Analytics & Power BI
 ```
 
-## Technology Stack
--Backend & APIs
--FastAPI
+# Technology Stack
+###Backend & APIs
+###FastAPI
 -Python
 -Firebase Admin SDK
 -Computer Vision
