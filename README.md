@@ -66,54 +66,82 @@ ML Analytics & Power BI
 | Analytics & BI | Power BI, R, ggplot2, corrplot |
 | DevOps & Deployment | Docker, Docker Compose |
 
+## Core Modules
 
-##Core Modules
-###Edge Monitoring & Intrusion Detection
+### Edge Monitoring & Intrusion Detection
 
-The intrusion detection engine continuously evaluates:
+A real-time security monitoring module that combines vibration, pressure, and sound sensor data to detect potential intrusion events with high reliability and low false-positive rates.
 
--Sound Activity
--Pressure Changes
--Vibration Events
+#### Detection Inputs
+- Sound Activity Monitoring
+- Pressure-Based Anomaly Detection
+- Vibration Event Tracking
 
-To improve reliability, alerts are generated only after multiple consecutive detections within a configurable time window.
+#### Key Features
+- Multi-Sensor Correlation Engine
+- Consecutive-Hit Verification Logic
+- Configurable Detection Windows
+- Alert Cooldown Mechanism
+- Real-Time Risk Scoring
+- False Positive Mitigation
+##  Driver Fatigue Detection
 
-Key Capabilities
+The driver fatigue analytics module continuously monitors behavioral and vehicle telemetry data to identify early signs of drowsiness, reduced alertness, and potentially unsafe driving conditions.
 
-- Multi-sensor fusion
+#### Monitored Metrics
+- Eye Closure Duration
+- Driver Risk Score
+- Steering Variability
+- Vehicle Speed Trends
+- Fatigue Velocity
 
--Consecutive-hit validation
+#### Risk Classification
 
-- Alert throttling
+| Level | Status |
+|---------|---------|
+| 🟢 | Safe |
+| 🟡 | Moderate Risk |
+| 🟠 | High Risk |
+| 🔴 | Critical Risk |
 
--False-positive reduction
-## Driver Fatigue Detection
+#### Key Capabilities
+- Real-Time Fatigue Monitoring
+- Behavioral Pattern Analysis
+- Risk Score Calculation
+- Early Warning Detection
+- Driver Safety Assessment
+- Machine Learning–Based Risk Classification
 
-###The fatigue analytics pipeline monitors behavioral indicators and identifies potentially dangerous driving patterns.
+The module leverages engineered features and predictive analytics to classify driver states, enabling proactive intervention before fatigue-related incidents occur.
+##  Databricks Medallion Architecture
 
-Tracked Metrics
--Eye Closure Duration
--Risk Score
--Steering Variability
--Vehicle Speed
--Fatigue Velocity
--Risk Categories
-🟢 Safe
-🟡 Moderate Risk
-🟠 High Risk
-🔴 Critical Risk
-## Databricks Medallion Architecture
-### Bronze Layer
+The data engineering pipeline follows the Medallion Architecture pattern to transform raw telemetry into high-quality, analytics-ready datasets for machine learning and business intelligence.
 
-Raw telemetry ingestion and schema validation.
+### Bronze Layer — Raw Data Ingestion
+- Real-time telemetry ingestion from Firebase
+- Schema validation and standardization
+- Immutable storage of raw sensor events
+- Foundation for downstream processing
 
-### Silver Layer
+### Silver Layer — Data Transformation & Feature Engineering
+- Data cleansing and noise reduction
+- Rolling window aggregations and smoothing
+- Risk volatility calculations
+- Fatigue velocity tracking
+- Feature engineering for predictive analytics
 
-Feature engineering, rolling windows, smoothing, and risk calculations.
+### Gold Layer — Analytics & Machine Learning
+- Driver risk classification using Random Forest
+- Operational risk assessment
+- Dashboard-ready business metrics
+- Curated datasets for reporting and visualization
 
-### Gold Layer
-
-Machine learning predictions and dashboard-ready datasets
+#### Key Benefits
+- Scalable Real-Time Data Processing
+- Reliable Data Quality Management
+- Advanced Feature Engineering
+- Machine Learning–Ready Datasets
+- Business Intelligence Optimization
 
 ## PROJECT STRUCTURE
 
@@ -128,46 +156,104 @@ Project-Sentinel-II/
 ├── .env
 └── README.md
 
-## Getting Started
+## 🚀 Getting Started
+
+Follow the steps below to set up and run Project Sentinel-II locally.
+
 ### Prerequisites
-Python 3.10+
-Docker
-Docker Compose
-Firebase Project
-Databricks Workspace
-###Configure Environment Variables
-FIREBASE_STORAGE_BUCKET=your_bucket
+
+Ensure the following dependencies are installed on your system:
+
+* Python 3.10 or later
+* Docker
+* Docker Compose
+* Firebase Project with Service Account Credentials
+* Databricks Workspace (for analytics pipeline execution)
+
+### Configure Environment Variables
+
+Create a `.env` file in the project root directory and add the following configuration:
+
+```env
+FIREBASE_STORAGE_BUCKET=your_bucket_name
 FIREBASE_DATABASE_URL=your_database_url
-###Start the Application
+```
+
+### Launch the Application
+
+Build and start all services using Docker Compose:
+
+```bash
 docker compose up --build -d
+```
 
-Application URL:
+### Access the Application
 
+Once the containers are running, the FastAPI service will be available at:
+
+```text
 http://localhost:8000
+```
 
-##Dashboard Insights
-###Security Monitoring
--Active intrusion alerts
--Threat severity tracking
--Event timeline analysis
-###Driver Safety Monitoring
--Fatigue trends
--Risk classification
--Safety score tracking
-###Fleet Intelligence
--Fleet health overview
--Historical incident analysis
--Operational risk monitoring
-##Business Impact
--Enhanced physical security
--Reduced false alarms
--Proactive driver safety monitoring
--Scalable fleet intelligence platform
--Data-driven operational decision making
-##Future Enhancements
--Real-time SMS & Email alerts
--GPS geofencing integration
--Deep Learning fatigue models
--Edge AI deployment
--Predictive maintenance analytics
+### Verify Deployment
 
+* Confirm Docker containers are running successfully.
+* Verify Firebase connectivity and data synchronization.
+* Access the FastAPI endpoint to ensure the API is operational.
+* Monitor incoming sensor telemetry and event streams.
+## 📊 Dashboard Insights
+
+The Power BI dashboard transforms raw telemetry and security events into actionable operational intelligence for fleet managers and security teams.
+
+### 🔐 Security Monitoring
+
+* Real-Time Intrusion Alerts
+* Threat Severity Analysis
+* Event Timeline Visualization
+* Sensor Activity Monitoring
+* Incident Tracking & Investigation
+
+### 😴 Driver Safety Monitoring
+
+* Driver Fatigue Trend Analysis
+* Risk Classification Dashboard
+* Safety Score Tracking
+* Behavioral Pattern Monitoring
+* High-Risk Driver Identification
+
+### Fleet Intelligence
+
+* Fleet Health Overview
+* Historical Incident Analysis
+* Operational Risk Monitoring
+* Vehicle Performance Insights
+* Fleet-Wide Safety Analytics
+
+---
+
+## Business Impact
+
+Project Sentinel-II delivers measurable operational and safety benefits by combining real-time monitoring, predictive analytics, and intelligent decision support.
+
+* Enhanced Physical Security Through Automated Intrusion Detection
+* Reduced False Positives Using Multi-Sensor Validation
+* Proactive Driver Safety Monitoring and Early Risk Detection
+* Scalable Fleet Intelligence and Operational Visibility
+* Data-Driven Decision Making Through Advanced Analytics
+* Improved Incident Response and Risk Management
+* Centralized Monitoring Across Vehicles and Assets
+
+---
+
+## Future Enhancements
+
+The platform is designed for extensibility and future innovation.
+
+* Real-Time SMS, Email, and Push Notifications
+* GPS-Based Geofencing and Location Tracking
+* Deep Learning Models for Advanced Fatigue Detection
+* Edge AI Deployment on Embedded Devices
+* Predictive Maintenance and Vehicle Health Analytics
+* Real-Time Streaming Dashboards with Live Alerts
+* Mobile Application for Fleet Monitoring
+* Cloud-Native Scalable Microservices Architecture
