@@ -143,8 +143,9 @@ The data engineering pipeline follows the Medallion Architecture pattern to tran
 - Machine Learning–Ready Datasets
 - Business Intelligence Optimization
 
-## PROJECT STRUCTURE
+## 📂 Project Structure
 
+```text
 Project-Sentinel-II/
 │
 ├── main.py
@@ -155,8 +156,35 @@ Project-Sentinel-II/
 ├── docker-compose.yml
 ├── .env
 └── README.md
+```
 
-## 🚀 Getting Started
+### File Overview
+
+| File                         | Description                                                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `main.py`                    | FastAPI backend responsible for sensor ingestion, event processing, Firebase integration, and API endpoints.             |
+| `risk.py`                    | Core intrusion detection and risk-scoring engine implementing threat evaluation logic.                                   |
+| `REAL-TIME databricks.ipynb` | Databricks notebook containing the Medallion Architecture pipeline, feature engineering, and machine learning workflows. |
+| `r-code.txt`                 | Statistical analysis scripts for exploratory data analysis, correlations, and visualization.                             |
+| `visuals_bi.pbix`            | Interactive Power BI dashboard for operational monitoring and business intelligence reporting.                           |
+| `docker-compose.yml`         | Container orchestration configuration for local deployment and service management.                                       |
+| `.env`                       | Environment variables and application configuration settings.                                                            |
+| `README.md`                  | Project documentation, setup instructions, architecture overview, and usage guide.                                       |
+
+### Repository Highlights
+
+* FastAPI-Powered Edge Processing
+* Real-Time IoT Telemetry Ingestion
+* Databricks Medallion Data Pipeline
+* Machine Learning–Based Risk Classification
+* Power BI Analytics & Reporting
+* Dockerized Deployment Architecture
+
+```
+```
+
+
+##  Getting Started
 
 Follow the steps below to set up and run Project Sentinel-II locally.
 
@@ -201,11 +229,11 @@ http://localhost:8000
 * Verify Firebase connectivity and data synchronization.
 * Access the FastAPI endpoint to ensure the API is operational.
 * Monitor incoming sensor telemetry and event streams.
-## 📊 Dashboard Insights
+## Dashboard Insights
 
 The Power BI dashboard transforms raw telemetry and security events into actionable operational intelligence for fleet managers and security teams.
 
-### 🔐 Security Monitoring
+###  Security Monitoring
 
 * Real-Time Intrusion Alerts
 * Threat Severity Analysis
@@ -213,7 +241,7 @@ The Power BI dashboard transforms raw telemetry and security events into actiona
 * Sensor Activity Monitoring
 * Incident Tracking & Investigation
 
-### 😴 Driver Safety Monitoring
+###  Driver Safety Monitoring
 
 * Driver Fatigue Trend Analysis
 * Risk Classification Dashboard
