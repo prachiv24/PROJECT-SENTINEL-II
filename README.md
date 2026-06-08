@@ -54,32 +54,18 @@ Databricks Lakehouse
 ML Analytics & Power BI
 ```
 
-# Technology Stack
-###Backend & APIs
-###FastAPI
--Python
--Firebase Admin SDK
--Computer Vision
--OpenCV
--face_recognition
--Data Engineering
--Databricks
--Apache Spark
--PySpark
--Delta Lake
--Machine Learning
--Random Forest Classifier
--Feature Engineering
--Time-Series Analytics
--Analytics & BI
--Power BI
--R
--ggplot2
--corrplot
--DevOps
--Docker
--Docker Compose
 
+# Technology Stack
+--------------------------------------------------------------------------------------------------
+| Category | Technologies |                                                                      |
+|-----------|-------------|                                                                      |
+| **Backend & APIs**      | FastAPI, Python, Firebase Admin SDK                                  |
+| **Computer Vision**     | OpenCV, face_recognition                                             |
+| **Data Engineering**    | Databricks, Apache Spark, PySpark, Delta Lake                        |
+| **Machine Learning**    | Random Forest Classifier, Feature Engineering, Time-Series Analytics |
+| **Analytics & BI**      | Power BI, R, ggplot2, corrplot                                       |
+| **DevOps & Deployment** | Docker, Docker Compose                                               |
+--------------------------------------------------------------------------------------------------
 ##Core Modules
 ###Edge Monitoring & Intrusion Detection
 
