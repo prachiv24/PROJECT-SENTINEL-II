@@ -26,8 +26,8 @@ The system is structured across three cohesive computational layers:
 │                                                                                                  │
 │       ┌──────────────────────────────────────────────────────────────────────────────────┐       │
 │       │                         FIREBASE UNIFIED BACKPLANE                               │       │
-│       │  - Realtime Database (NoSQL Sensor Nodes)                                        │       │
-│       │  - Cloud Storage Buckets (Biometric Capture Payloads)                             │       │
+│       │                  - Realtime Database (NoSQL Sensor Nodes)                        │       │
+│       │           - Cloud Storage Buckets (Biometric Capture Payloads)                   │       │
 │       └────────────────────────────────────────┬─────────────────────────────────────────┘       │
 └──────────────────────────────────────────────────┼───────────────────────────────────────────────┘
                                                    │
@@ -37,9 +37,9 @@ The system is structured across three cohesive computational layers:
 │                                                                                                  │
 │  ┌──────────────────────────────┐    ┌──────────────────────────────┐    ┌────────────────────┐  │
 │  │    BRONZE LAYER (RAW)        │    │   SILVER LAYER (ENRICHED)    │    │ GOLD LAYER (CURED) │  │
-│  │  - High-Velocity Ingestion   │    │  - Sliding Window Smoothing  │    │ - Random Forest ML │  │
-│  │  - Schema Enforcement        │───►│  - Risk Volatility Calculation│───►│ - Severity Buckets │  │
-│  │  - Delta Table Landing Zone  │    │  - Fatigue Velocity (Δr/Δt)  │    │ - Dashboard Ready  │  │
+│  │  - High-Velocity Ingestion   │    │ - Sliding Window Smoothing   │    │ - Random Forest ML │  │
+│  │  - Schema Enforcement        │───►│ - Risk Volatility calculation│───►│ - Severity Buckets │  │
+│  │  - Delta Table Landing Zone  │    │ - Fatigue Velocity (Δr/Δt)   │    │ - Dashboard Ready  │  │
 │  └──────────────────────────────┘    └──────────────────────────────┘    └────────────────────┘  │
 └──────────────────────────────────────────────────┬───────────────────────────────────────────────┘
                                                    │
@@ -50,7 +50,7 @@ The system is structured across three cohesive computational layers:
 │       ┌─────────────────────────────────────┐     ┌──────────────────────────────────────┐       │
 │       │        R STATISTICAL SUITE          │     │          POWER BI DASHBOARD          │       │
 │       │  - Multivariate Density Plots       │     │  - Live Fleet Telemetry Streams      │       │
-│       │  - ANOVA Significance Verification   │     │  - Geographic Intrusion Map Feeds    │       │
+│       │  - ANOVA Significance Verification  │     │  - Geographic Intrusion Map Feeds    │       │
 │       │  - Correlation Matrices (corrplot)  │     │  - Operational Risk Severities       │       │
 │       └─────────────────────────────────────┘     └──────────────────────────────────────┘       │
 └──────────────────────────────────────────────────────────────────────────────────────────────────┘
@@ -100,7 +100,7 @@ Generates diagnostic visualizations, showing the strict correlation between cont
 
 ---
 
-## Deployment Instructions
+## 🚀 Deployment Instructions
 
 ### Prerequisites
 Make sure your environment has **Docker**, **Python 3.10+**, and a active **Firebase Project Service Account Account Link**.
@@ -110,3 +110,37 @@ Create a `.env` file in the root directory containing the proper environmental e
 ```env
 FIREBASE_STORAGE_BUCKET=car-intrusion-detection-f13de.firebasestorage.app
 FIREBASE_DATABASE_URL=[https://car-intrusion-detection-f13de-default-rtdb.asia-southeast1.firebasedatabase.app/](https://car-intrusion-detection-f13de-default-rtdb.asia-southeast1.firebasedatabase.app/)
+2. Initializing via Docker Compose
+To construct the images, link network volumes, expose Port 8000, and launch the system container stack, run:
+
+Bash
+docker compose up --build -d
+3. Running the Databricks Pipeline
+Upload the REAL-TIME databricks.ipynb file into your Databricks Workspace.
+
+Mount your target storage endpoints or paste your Firebase access credentials directly within Cell 2 configurations.
+
+Attach the notebook to a running Spark cluster and click Run All.
+
+4. Running the R Visualization Suite
+Open your preferred R environment (e.g., RStudio), ensure you have installed your dependencies, and run:
+
+R
+install.packages(c("dplyr", "ggplot2", "tidyr", "corrplot"))
+# Source or execute the content of r-code.txt
+## Dashboard Insights
+Open visuals_bi.pbix inside Power BI Desktop to view:
+
+Active Intrusions: Real-time spatial tracking indicators triggered by critical edge alarms.
+
+Driver Risk Profiler: Aggregated time charts tracking steering stability against eye closure metrics.
+
+Fleet Integrity: A unified operational status summary indicating which vehicles are safe, in warning states, or in need of an immediate emergency dispatch check.
+
+
+***
+
+### 💡 What changed/improved here?
+1. **Accurate Mapping:** It explicitly references your specific Firebase project variables (like `car-intrusion-detection-f13de`), specific code boundaries (`REQUIRED_HITS = 3`), and names every file you have actually tracked in your commit.
+2. **Academic & Professional Tone:** It frames your code cleanly as a **cyber-physical safety system using the Medallion Architecture**, making it look exceptional for project vivas, evaluations, or GitHub profiles. 
+3. **Structured Setup Guide:** Gives concrete steps on how to execute everything together (Docker $\rightarrow$
