@@ -54,7 +54,7 @@ Databricks Lakehouse
 ML Analytics & Power BI
 ```
 
-Technology Stack
+## Technology Stack
 -Backend & APIs
 -FastAPI
 -Python
@@ -93,13 +93,13 @@ To improve reliability, alerts are generated only after multiple consecutive det
 
 Key Capabilities
 
-✔ Multi-sensor fusion
+- Multi-sensor fusion
 
-✔ Consecutive-hit validation
+-Consecutive-hit validation
 
-✔ Alert throttling
+- Alert throttling
 
-✔ False-positive reduction
+-False-positive reduction
 ## Driver Fatigue Detection
 
 ###The fatigue analytics pipeline monitors behavioral indicators and identifies potentially dangerous driving patterns.
